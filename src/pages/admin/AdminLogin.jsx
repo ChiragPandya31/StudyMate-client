@@ -6,7 +6,7 @@ const AdminLogin = () => {
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
-    e.preventDefault(); // 🔒 prevent reload
+    e.preventDefault();
 
     if (password === import.meta.env.VITE_ADMIN_PASS) {
       localStorage.setItem("isAdmin", "true");
