@@ -63,7 +63,7 @@ const AllMaterials = () => {
   <NoteCard
   key={material._id}
   title={material.title}
-  contentURL={`${import.meta.env.VITE_API_BASE_URL}/${material.contentURL}`}
+  contentURL={material.contentURL}
   materialId={material._id}
 />
 ))}
