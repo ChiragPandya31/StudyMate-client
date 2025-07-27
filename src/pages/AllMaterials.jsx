@@ -61,11 +61,11 @@ const AllMaterials = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filtered.map((material) => (
   <NoteCard
-    key={material._id}
-    title={material.title}
-    contentURL={material.contentURL}
-    materialId={material._id}
-  />
+  key={material._id}
+  title={material.title}
+  contentURL={`${import.meta.env.VITE_API_BASE_URL}/${material.contentURL}`}
+  materialId={material._id}
+/>
 ))}
 
 
