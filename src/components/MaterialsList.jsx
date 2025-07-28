@@ -22,14 +22,14 @@ const MaterialsList = () => {
         return (
           <div key={mat._id}>
             <p><strong>{mat.title}</strong> ({mat.materialType})</p>
-            <a
-              href={downloadLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              download
-            >
-              Download PDF
-            </a>
+           <a
+  href={`https://studymate-server-production.up.railway.app/uploads/${mat.contentURL.split("/").pop()}`}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Download PDF
+</a>
+
           </div>
         );
       })}
