@@ -38,7 +38,7 @@ const UploadMaterial = () => {
 
     try {
       setUploading(true);
-      const res = await fetch("http://localhost:5000/api/materials", {
+     const res = await fetch("https://studymate-server-production.up.railway.app/api/materials", {
         method: "POST",
         body: data,
       });
