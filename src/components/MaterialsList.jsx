@@ -16,7 +16,14 @@ const MaterialsList = () => {
       {materials.map((mat) => (
         <div key={mat._id}>
           <p><strong>{mat.title}</strong> ({mat.materialType})</p>
-          <a href={`http://localhost:5000${mat.contentURL}`} download>Download PDF</a>
+          <a
+  href={`http://localhost:5000/download/${mat.contentURL.split("/").pop()}`}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Download PDF
+</a>
+
         </div>
       ))}
     </div>
