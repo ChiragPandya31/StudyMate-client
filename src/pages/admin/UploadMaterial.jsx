@@ -38,43 +38,36 @@ const UploadMaterial = () => {
 
     try {
       setUploading(true);
-     const res = await fetch("https://studymate-server-production.up.railway.app/api/materials", {
+
+      const res = await fetch("https://studymate-server-production.up.railway.app/api/materials", {
         method: "POST",
-        body: formData,
+        body: data, // ✅ send FormData, not formData
       });
-       const text = await res.text();
 
-  console.log("Raw response text:", text); 
-
-  if (!res.ok) {
-    throw new Error(`Upload failed: ${text}`);
-  }
-
-  const data = JSON.parse(text);
-  console.log("Upload success:", data);
-} catch (err) {
-  console.error("Upload error:", err);
-}
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(`Upload failed: ${errorText}`);
+      }
 
       const result = await res.json();
 
-      if (res.ok) {
-        alert("✅ Material uploaded successfully!");
-        setFormData({
-          course: "degree",
-          semester: "",
-          subject: "",
-          materialType: "notes",
-          title: "",
-        });
-        setFile(null);
-        document.getElementById("fileInput").value = "";
-      } else {
-        alert("❌ Upload failed: " + result.message);
-      }
+      alert("✅ Material uploaded successfully!");
+      console.log("Upload success:", result);
+
+      // Reset
+      setFormData({
+        course: "degree",
+        semester: "",
+        subject: "",
+        materialType: "notes",
+        title: "",
+      });
+      setFile(null);
+      document.getElementById("fileInput").value = "";
+
     } catch (err) {
       console.error("Upload error:", err);
-      alert("❌ Upload failed. Check your server connection.");
+      alert("❌ Upload failed. Check your file and internet.");
     } finally {
       setUploading(false);
     }
