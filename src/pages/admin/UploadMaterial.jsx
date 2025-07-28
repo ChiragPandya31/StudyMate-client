@@ -42,6 +42,19 @@ const UploadMaterial = () => {
         method: "POST",
         body: formData,
       });
+       const text = await res.text();
+
+  console.log("Raw response text:", text); 
+
+  if (!res.ok) {
+    throw new Error(`Upload failed: ${text}`);
+  }
+
+  const data = JSON.parse(text);
+  console.log("Upload success:", data);
+} catch (err) {
+  console.error("Upload error:", err);
+}
 
       const result = await res.json();
 
