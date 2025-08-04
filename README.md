@@ -29,15 +29,16 @@ StudyMate is a student-focused web app that helps students to access every possi
 ```bash
 git clone https://github.com/your-username/studymate-client
 cd studymate-client
-
+```
 ### 2. Install dependencies
-
+```bash
 npm install
-
+```
 ### 3. Create a .env file
-
+```bash
 VITE_API_BASE_URL=http://localhost:5000
-
+```
 ### 4. Run the development server
-
+```bash
 npm run dev
+```
