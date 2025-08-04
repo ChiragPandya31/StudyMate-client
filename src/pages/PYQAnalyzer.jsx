@@ -19,7 +19,7 @@ export default function PYQAnalyzer() {
 
     try {
       setLoading(true);
-     const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/pyq/analyze`, formData);
+     await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/pyq/analyze-pyq`, formData);
       const formattedResults = Object.entries(res.data).map(
         ([filename, data]) => ({
           subject: data.subject || filename,
