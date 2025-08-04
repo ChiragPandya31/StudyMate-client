@@ -19,7 +19,7 @@ export default function QuizBattle() {
     if (!subject) return alert("Enter a subject to start quiz!");
 
     try {
-      const res = await axios.get(`${VITE_API_BASE_URL}/api/quiz`, {
+      const res = await axios.get(`${BASE_URL}/api/quiz`, {
         params: { subject },
       });
 
