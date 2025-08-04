@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Sparkles } from "lucide-react";
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export default function QuizBattle() {
   const [subject, setSubject] = useState("");
   const [questions, setQuestions] = useState([]);
@@ -13,12 +15,11 @@ export default function QuizBattle() {
 
   const navigate = useNavigate();
 
-
   const startQuiz = async () => {
     if (!subject) return alert("Enter a subject to start quiz!");
 
     try {
-      const res = await axios.get("http://localhost:5000/api/quiz", {
+      const res = await axios.get(`${BASE_URL}/api/quiz`, {
         params: { subject },
       });
 
@@ -57,14 +58,14 @@ export default function QuizBattle() {
 
   return (
     <div className="p-6 w-full mx-auto min-h-screen bg-[#0f172a] text-white">
-       <button
+      <button
         onClick={() => navigate(-1)}
         className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded mb-10 hover:shadow-lg group hover:scale-[1.03] transition-all text-lg"
       >
         ← Back
       </button>
-        <h2 className="text-4xl font-bold text-center mb-8 flex items-center justify-center gap-2">
-       <Sparkles className="text-yellow-400" /> AI-Powered Quiz Battle
+      <h2 className="text-4xl font-bold text-center mb-8 flex items-center justify-center gap-2">
+        <Sparkles className="text-yellow-400" /> AI-Powered Quiz Battle
       </h2>
 
       {!questions.length && (
@@ -129,7 +130,7 @@ export default function QuizBattle() {
           <h3 className="text-2xl font-bold text-green-400">Quiz Finished</h3>
           <p className="text-lg">
             You scored:{" "}
-            <span className="text-blue-400 font-semibold">{score}</span> out of {" "}
+            <span className="text-blue-400 font-semibold">{score}</span> out of{" "}
             <span className="text-blue-400 font-semibold">
               {questions.length}
             </span>
